@@ -4,36 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="pomodoro.css">
 </head>
 <body>
-    <button data-time="25:00" id="pomodoro">Pomodoro</button>
-    <button data-time="5:00" id="shortBreak">Short Break</button>
-    <button data-time="10:00" id="longBreak">Long Break</button>
-    <div id="clock">Clock</div>
-    <button id="start">start</button>
-    <button id="pause">pause</button>
-    <button id="reset">reset</button>
+    <button id="pomodoro">Pomodoro</button>
+    <button id="shortBreak">Short Break</button>
+    <button id="longBreak">Long Break</button>
+    <button id="adjust">Adjust</button>
+    <div id="clock">25:00</div>
+    <button id="startButton">Start</button>
+    <button id="pauseButton">Pause</button>
+    <button id="resetButton">Reset</button>
+
     <script>
-        const clock = document.querySelector('#clock')
-        const pomodoro = document.querySelector('#pomodoro')
-        const shortBreak = document.querySelector('#shortBreak')
-        const longBreak = document.querySelector('#longBreak')
+        let number; // number of seconds
+        const pomodoro = document.querySelector('#pomodoro');
+        const shortBreak = document.querySelector('#shortBreak');
+        const longBreak = document.querySelector('#longBreak');
+        const adjustButton = document.querySelector('#adjust');
+        const resetButton = document.querySelector('#resetButton'); // to add functionality
+        const clock = document.querySelector('#clock'); // clock div to display time on
+        const startButton = document.querySelector('#startButton');
+        const pauseButton = document.querySelector('#pauseButton');
+        let startTime;
+        let intervalID = null;
+        let isPaused = false;
 
-        document.querySelectorAll('button').forEach(function(button) {
-            button.onclick = function() {
-                clock.textContent = button.dataset.time;
+        adjustButton.addEventListener('click', () => {
+            let user_number = prompt('Enter the number of minutes:');
+            number = user_number * 60;
+            startTime = number;
+            clock.textContent = formatTime(user_number, 0);
+            
+        });
+
+        pomodoro.addEventListener('click', () => {
+            number = 25 * 60; // 25 minutes in seconds
+            startTime = number;
+            clearInterval(intervalID); // clear running interval
+            clock.textContent = formatTime(25, 0);
+        });
+
+        shortBreak.addEventListener('click', () => {
+            number = 5 * 60; // 5 minutes in seconds
+            startTime = number;
+            clearInterval(intervalID); // clear running interval
+            clock.textContent = formatTime(5, 0);
+        });
+
+        longBreak.addEventListener('click', () => {
+            number = 10 * 60; // 10 minutes in seconds
+            startTime = number;
+            clearInterval(intervalID); // clear running interval
+            clock.textContent = formatTime(10, 0);
+        });
+
+        // Need to fix reset functionality
+        resetButton.addEventListener('click', () => {
+            stopTimer();
+            number = startTime;
+            let minutes = startTime / 60;
+            clock.textContent = formatTime(minutes, 0); // reset to the last entered time
+
+        });
+
+        function updateNumber() {
+            if (number <= 0) {
+                clearInterval(intervalID);
+                clock.textContent = '00:00';
+                return;
             }
-        })
-
-        function startClock () {
-            const timeArray = clock.textContent.split(':');
-            let minutes = timeArray[0];
-            let seconds = timeArray[1];
-            let timer = setInterval(updateClock, 1000);
+            // Decrement the number of seconds and update the clock
+            number--;
+            const minutes = Math.floor(number / 60);
+            const seconds = number % 60;
+            clock.textContent = formatTime(minutes, seconds);
         }
 
-        function updateClock()
-        
+        function stopTimer() {
+            clearInterval(intervalID);
+            intervalID = null; // clear the interval ensure no timer is running after
+        }
+
+        function formatTime(minutes, seconds) {
+            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        startButton.addEventListener('click', () => {
+            // ensure start button doesn't run multiple times
+            if (!intervalID) {
+                intervalID = setInterval(updateNumber, 1000);
+            }
+        });
+
+        pauseButton.addEventListener('click', () => {
+            if (isPaused) {
+                intervalID = setInterval(updateNumber, 1000);
+                isPaused = false;
+            }
+            else {
+                clearInterval(intervalID);
+                isPaused = true;
+            }
+        });
+
+
     </script>
 </body>
 </html>
