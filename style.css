@@ -1,0 +1,12 @@
+#clock {
+    width: 500px;
+    margin: 30px auto;
+    background-color: #c3edf8;
+    border: 5px;
+    padding: 15%;
+    font-size: 200%;
+}
+
+html {
+    background-color: #7BD3EA;
+}
