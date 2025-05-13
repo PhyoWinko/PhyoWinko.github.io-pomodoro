@@ -1,12 +1,47 @@
-#clock {
-    width: 500px;
-    margin: 30px auto;
-    background-color: #c3edf8;
-    border: 5px;
-    padding: 15%;
-    font-size: 200%;
+header {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: start;
+    gap: 10px;
 }
 
-html {
-    background-color: #7BD3EA;
+#header-small-text {
+    font-size: 0.7rem; /* em unit for font compared to related elemnt */
+    /* rem compared to browser base font-size; */
+    padding: 50px 0;
 }
+
+#pomodoro-clock {
+    display: flex; /* show and make children flex */
+    flex-direction: column; /* column direction */
+    align-items: center; /* center children */
+}
+
+button {
+    background-color: white;
+    font-size: 1rem;
+    font-family: "Roboto";
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+#clock {
+    padding: 30px;
+    font-size: 6rem;
+    font-weight: 700;
+}
+
+#pomodoro-div {
+    height: 100vh;
+}
+
+#content-div {
+    min-height: 100vh;
+    margin: 20%;
+    padding: 5%;
+}
+

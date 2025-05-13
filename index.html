@@ -5,18 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/bbabf61a8b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Pomodoro, less Procast More Product</h1>
-    <button id="pomodoro">Pomodoro</button>
-    <button id="shortBreak">Short Break</button>
-    <button id="longBreak">Long Break</button>
-    <button id="adjust">Adjust</button>
-    <div id="clock">25:00</div>
-    <button id="startButton">Start</button>
-    <button id="pauseButton">Pause</button>
-    <button id="resetButton">Reset</button>
+    <div id="pomodoro-div" class="page">
+        <header>
+            <h1>Pomodoro</h1>
+            <span id="header-small-text">less Procrastination<br>More Productivity</span>
+        </header>
 
-    <script src="script2.js"></script>
+        <div id="pomodoro-clock">
+            <div id="upper-btn" class="btn-div">
+                <button id="pomodoro">Pomodoro</button>
+                <button id="shortBreak">Short Break</button>
+                <button id="longBreak">Long Break</button>
+                <!-- aria-laebel for assisted technology for screen reader -->
+                <button id="adjust" aria-label="Adjust Timer"><i><i class="fa-solid fa-gear"></i></i></button>
+            </div>
+            <div id="clock">25:00</div>
+            <div id="lower-btn" class="btn-div">
+                <button id="startButton">Start</button>
+                <button id="pauseButton" aria-label="Pause Timer"><i class="fa-solid fa-pause"></i></button>
+                <button id="resetButton" aria-label="Reset Timer"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- content display div -->
+     <div id="content-div" class="page">
+        <div class="text-content-div">
+            <h2>Pomodo Technique</h2>
+            <p>
+                The Pomodoro Technique is a time management method developed by 
+                Francesco Cirillo in the late 1980s. 
+                <br>
+                In Pomodoro, you do focused work during 25-minute 
+                intervals — known as pomodoros — and take a five-minute break.
+                <br>
+                It aims to improve productivity by breaking work into intervals,
+                 typically 25 minutes in length, separated by short breaks.
+            </p>
+        </div>
+
+        <div class="text-content-div">
+            <h2>Fun fact</h2>
+            <p>
+                <p><strong>"Pomodoro" means "tomato" in Italian.</strong>
+                <br>
+                The Pomodoro Technique got its name because Francesco Cirillo, 
+                its inventor, used a red, tomato-shaped kitchen timer to time his study sessions.
+            </p>
+        </div>
+
+        <div class="text-content-div">
+            <h2>Communities</h2>
+            <p>You can join pomodoro communities here. </p>
+            <a href="https://www.reddit.com/r/pomodoro/">Reddit: Pomodoro Communities</a>
+        </div>
+     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
