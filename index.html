@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>POMODORO</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
 
         <div id="pomodoro-clock">
             <div id="upper-btn" class="btn-div">
-                <button id="pomodoro">Pomodoro</button>
+                <button id="pomodoro" aria-label="Pomodoro Timer">Pomodoro</i></button>
                 <button id="shortBreak">Short Break</button>
                 <button id="longBreak">Long Break</button>
                 <!-- aria-laebel for assisted technology for screen reader -->
@@ -31,6 +31,7 @@
                 <button id="pauseButton" aria-label="Pause Timer"><i class="fa-solid fa-pause"></i></button>
                 <button id="resetButton" aria-label="Reset Timer"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
+            <audio id=alarmSound src="noti1.mp3" preload="auto">audio</audio>
         </div>
     </div>
     
@@ -62,11 +63,28 @@
 
         <div class="text-content-div">
             <h2>Communities</h2>
-            <p>You can join pomodoro communities here. </p>
-            <a href="https://www.reddit.com/r/pomodoro/">Reddit: Pomodoro Communities</a>
-        </div>
+            <p>You can join pomodoro communities here.
+            <a href="https://www.reddit.com/r/pomodoro/">Reddit: Pomodoro Communities</a> </p>
+
+            <div class="text-content-div">
+                <h1><i class="fas fa-tools"></i> Under development </h1>
+                <p>This app is underdevelopment. Some feauters are not implemented yet and we're working to be added soon.</p>
+                <p>feauters to be added ...
+                    <ul>
+                        <li>Auto switch timer mode</li>
+                        <li>Forest </li>
+                    </ul>
+                </p>
+            </div>
+        </div>  
      </div>
+
+    
+
 
     <script src="script.js"></script>
 </body>
 </html>
+<!-- for better version have to do
+ automatically switch pomodoro with time loop
+ isPomodoro = true isStopTime = ture-->

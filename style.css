@@ -1,4 +1,19 @@
+body {
+    margin: 0;
+}
+
+/* tomato color #ff6347 */
+
+#pomodoro-div {
+    background-image: url('./background_photo.jpg');
+    background-size: cover;
+    height: 100vh;
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
 header {
+    padding-left: 2%;
     font-size: 1.5rem;
     display: flex;
     align-items: start;
@@ -8,40 +23,76 @@ header {
 #header-small-text {
     font-size: 0.7rem; /* em unit for font compared to related elemnt */
     /* rem compared to browser base font-size; */
-    padding: 50px 0;
-}
+    padding: 50px 0;}
 
 #pomodoro-clock {
     display: flex; /* show and make children flex */
     flex-direction: column; /* column direction */
     align-items: center; /* center children */
+    justify-content: center;
 }
 
 button {
-    background-color: white;
-    font-size: 1rem;
+    font-size: 1em;
     font-family: "Roboto";
+    font-weight: 570;
     cursor: pointer;
     padding: 0.2rem 0.5rem;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #FFAE00, #F9E866);
+    transition: all 0.3s ease;
+    color: #222;
+
+}
+#upper-btn {
+    display: flex;
+    font-size: 0.9rem;
+    gap: 3px;
+}
+
+#lower-btn {
+    display: flex;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    gap: 20px;
+    background: linear-gradient(135deg, #F9E866, #FFAE00); /* Reverse gradient on hover */
+
 }
 
 button:hover {
-    background-color: grey;
+    background: linear-gradient(135deg, #F9E866, #FFAE00); /* Reverse gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Increase shadow depth */
+    color: #000; /* Darker text for contrast */
 }
+
 
 #clock {
     padding: 30px;
     font-size: 6rem;
     font-weight: 700;
-}
-
-#pomodoro-div {
-    height: 100vh;
+    text-align: center;
+    border: 1px solid #89AC46;
+    border-radius: 5px;
+    min-width: 60%;
+    margin: 2px auto;
+    color: black;
+    box-shadow: 0 6px 7px rgba(0, 0, 0, 0.1);
+    background-color: #F3C623;
 }
 
 #content-div {
     min-height: 100vh;
-    margin: 20%;
-    padding: 5%;
+    padding: 15%;
+    background: linear-gradient(135deg, #FFAE00, #F9E866)
 }
+
+
+a {
+    text-align: none;
+    color: black;
+}
+
 

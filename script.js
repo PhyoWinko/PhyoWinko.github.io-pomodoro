@@ -7,7 +7,7 @@ const resetButton = document.querySelector('#resetButton'); // to add functional
 const clock = document.querySelector('#clock'); // clock div to display time on
 const startButton = document.querySelector('#startButton');
 const pauseButton = document.querySelector('#pauseButton');
-let startTime;
+let startTime = number; // Store the start time
 let intervalID = null;
 let isPaused = false;
 
@@ -17,24 +17,28 @@ adjustButton.addEventListener('click', () => {
     let user_number = prompt('Enter the number of minutes:');
     number = user_number * 60; // convert minutes to seconds
     clock.textContent = formatTime(user_number, 0);
+    startTime = number; // Store the start time
 });
 
 pomodoro.addEventListener('click', () => {
     stopTimer();
     number = 25 * 60;
-    clock.textContent = formatTime(25, 0); // set the clock to 25 minutes   
+    clock.textContent = formatTime(25, 0); // set the clock to 25 minutes
+    startTime = number; // Store the start time   
 });
 
 shortBreak.addEventListener('click', () => {
     stopTimer();
     number = 5 * 60; // set the clock to 5 minutes
     clock.textContent = formatTime(5, 0);
+    startTime = number; // Store the start time
 });
 
 longBreak.addEventListener('click', () => {
     stopTimer();
     number = 10 * 60; // set the clock to 10 minutes
     clock.textContent = formatTime(10, 0);
+    startTime = number; // Store the start time
 });
 
 
@@ -47,12 +51,13 @@ resetButton.addEventListener('click', () => {
 
 
 function updateNumber() {
-    if (number <= 0) {
+    if (number === 0) {
         clearInterval(intervalID);
         clock.textContent = '00:00';
-        alert('Time is up!');
+        document.querySelector('#alarmSound').play(); // play alarm sound 
         return;
     }
+
     // Decrement the number of seconds and update the clock
     number--;
     const minutes = Math.floor(number / 60);
@@ -72,7 +77,6 @@ function formatTime(minutes, seconds) {
 startButton.addEventListener('click', () => {
     // ensure start button doesn't run multiple times
     if (!intervalID) {
-        startTime = number; // Store the start time
         intervalID = setInterval(updateNumber, 1000);
     }
 });
